@@ -66,9 +66,16 @@ export const registerUser = async (req: Request, res: Response) => {
 }
 
 export const verifyAccount = async (req: Request, res: Response) => {
+
+    const validationErrors = validationResult(req)
+
+    if (!validationErrors.isEmpty())
+        return generateResponse('error', 'validation errors', validationErrors.array(), res)
+
     const data = req.params;
 
     const decrypted_data = decrypt(data.token);
+
 
     const user = await prisma.users.findFirst({
         where: {
@@ -104,9 +111,16 @@ export const verifyAccount = async (req: Request, res: Response) => {
 }
 
 export const reVerifyAccount = async (req:Request, res:Response) => {
+    const validationErrors = validationResult(req)
+
+    if (!validationErrors.isEmpty())
+        return generateResponse('error', 'validation errors', validationErrors.array(), res)
+
     const {email} = req.body;
-    
-    const user = await prisma.users.findFirst({
+
+    console.log('email', email)
+
+    const user:any = await prisma.users.findFirst({
         where: {
             email: email
         }
@@ -138,4 +152,13 @@ export const reVerifyAccount = async (req:Request, res:Response) => {
 
         return generateResponse('error', 'User registration failed', errors, res)
     }
+}
+
+export const login = async (req:Request, res:Response) => {
+    const validationErrors = validationResult(req)
+
+    if (!validationErrors.isEmpty())
+        return generateResponse('error', 'validation errors', validationErrors.array(), res)
+
+
 }
