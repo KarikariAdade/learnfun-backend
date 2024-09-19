@@ -1,0 +1,11 @@
+2024-09-19 00:01:33 [error]: User registration failed 
+Invalid `prisma.users.create()` invocation in
+D:\Projects\Node\learn-fun\src\authentication\controllers\authentication.controller.ts:32:41
+
+  29     return generateResponse('error', 'Email already exists', null, res)
+  30 
+  31 const expiry_date = new Date(new Date().getTime() + 30 * 60 * 1000)
+→ 32 const user = await prisma.users.create(
+Unique constraint failed on the constraint: `Users_phone_key`
+2024-09-19 00:01:55 [info]: User registered successfully
+2024-09-19 00:23:08 [info]: User registered successfully

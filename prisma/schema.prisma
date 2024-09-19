@@ -52,6 +52,8 @@ model Users {
   phone             String?             @unique
   password          String
   role              Roles
+  is_verified Boolean @default(false)
+  verification_expiry DateTime?
   account_auth_type AccountAuthType     @default(DIRECT)
   PasswordResets    Password_Resets[]
   created_at        DateTime            @default(now())
