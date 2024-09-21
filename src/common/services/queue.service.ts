@@ -20,8 +20,6 @@ const emailTransporter:any = nodemailer.createTransport({
         user: 'cd92ef3799c628',
         pass: '681ef0faaba48e'
     },
-    debug: true,
-    logger: true
 } as any)
 
 emailTransporter.use("compile", handlebars({
