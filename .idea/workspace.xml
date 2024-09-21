@@ -5,27 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e3b3131-a797-4fcb-8c21-746d6a09ecb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/logs/.9aff62f6195c442e5677553cffe46706ddd20ff2-audit.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/application-2024-09-14.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/application-2024-09-18.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/application-2024-09-19.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prisma/migrations/20240918235706_/migration.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authentication/controllers/authentication.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authentication/requests/authentication.request.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authentication/services/authentication.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/routes/common.route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/services/common.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/services/database.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/services/logger.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/services/queue.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/templates/accountCreationTemplate.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/services/passport.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/templates/passwordReset.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/.9aff62f6195c442e5677553cffe46706ddd20ff2-audit.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/.9aff62f6195c442e5677553cffe46706ddd20ff2-audit.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authentication/controllers/authentication.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/authentication/controllers/authentication.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authentication/requests/authentication.request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/authentication/requests/authentication.request.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authentication/services/authentication.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/authentication/services/authentication.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/routes/common.route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/routes/common.route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +49,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;authentication&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.0.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.0.3&quot;,
@@ -130,6 +123,9 @@
       <workItem from="1726691245641" duration="3463000" />
       <workItem from="1726694932182" duration="9812000" />
       <workItem from="1726706551363" duration="89000" />
+      <workItem from="1726881678609" duration="167000" />
+      <workItem from="1726881877651" duration="4618000" />
+      <workItem from="1726926150029" duration="7165000" />
     </task>
     <servers />
   </component>
@@ -140,6 +136,18 @@
   "history": [
     {
       "branch": "master",
+      "currentBranchFilter": true
+    },
+    {
+      "branch": "main",
+      "currentBranchFilter": true
+    },
+    {
+      "branch": "main",
+      "currentBranchFilter": true
+    },
+    {
+      "branch": "main",
       "currentBranchFilter": true
     },
     {
