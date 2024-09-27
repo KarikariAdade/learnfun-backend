@@ -19,55 +19,55 @@ enum Roles {
   EDUCATOR
 }
 
-enum AccountAuthType {
+enum Account_Auth_Type {
   DIRECT
   GOOGLE
   FACEBOOK
 }
 
-enum QuestionTypes {
+enum Question_Types {
   MULTIPLE_CHOICE
   ESSAY
   TRUE_FALSE
 }
 
-enum MessageTypes {
+enum Message_Types {
   TEXT
   FILE
   IMAGE
   VIDEO
 }
 
-enum MediaTypes {
+enum Media_Types {
   IMAGE
   VIDEO
   AUDIO
 }
 
 model Users {
-  id                Int                 @id @default(autoincrement())
-  uuid              String              @default(uuid())
-  name              String
-  email             String              @unique
-  phone             String?             @unique
-  password          String
-  role              Roles
-  is_verified Boolean @default(false)
+  id                  Int                   @id @default(autoincrement())
+  uuid                String                @default(uuid())
+  name                String
+  email               String                @unique
+  phone               String?               @unique
+  password            String
+  role                Roles
+  is_verified         Boolean               @default(false)
   verification_expiry DateTime?
-  account_auth_type AccountAuthType     @default(DIRECT)
-  PasswordResets    Password_Resets[]
-  created_at        DateTime            @default(now())
-  updated_at        DateTime            @default(now())
-  Courses           Courses[]
-  Exams             Exams[]
-  ExamSubmissions   ExamSubmissions[]
-  ExamResults       ExamResults[]
-  ChatParticipants  ChatParticipants[]
-  ChatMessages      ChatMessages[]
-  MessageReadStatus MessageReadStatus[]
-  Posts             Posts[]
-  Likes             Likes[]
-  Comments          Comments[]
+  account_auth_type   Account_Auth_Type     @default(DIRECT)
+  PasswordResets      Password_Resets[]
+  created_at          DateTime              @default(now())
+  updated_at          DateTime              @default(now())
+  Courses             Courses[]
+  Exams               Exams[]
+  ExamSubmissions     Exam_Submissions[]
+  ExamResults         Exam_Results[]
+  ChatParticipants    Chat_Participants[]
+  ChatMessages        Chat_Messages[]
+  MessageReadStatus   Message_Read_Status[]
+  Posts               Posts[]
+  Likes               Likes[]
+  Comments            Comments[]
 }
 
 model Password_Resets {
@@ -83,93 +83,99 @@ model Password_Resets {
 }
 
 model Past_Questions {
-  id         Int      @id @default(autoincrement())
-  subject    String
-  year       Int?     @db.Year
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now())
+  id              Int           @id @default(autoincrement())
+  subject         String
+  year            Int?          @db.Year
+  created_at      DateTime      @default(now())
+  updated_at      DateTime      @default(now())
+  school_group_id Int
+  School_Groups   School_Groups @relation(fields: [school_group_id], references: [id])
+  subject_id      Int
+  Subjects        Subjects      @relation(fields: [subject_id], references: [id])
 }
 
 model Courses {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   title       String
-  description String?  @db.LongText
+  description String?   @db.LongText
   educator_id Int
-  created_at  DateTime @default(now())
-  updated_at  DateTime @default(now())
-  belongsTo   Users    @relation(fields: [educator_id], references: [id])
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @default(now())
+  belongsTo   Users     @relation(fields: [educator_id], references: [id])
   Exams       Exams[]
+  Subjects    Subjects? @relation(fields: [subject_id], references: [id])
+  subject_id  Int?
 }
 
 model Exams {
-  id                  Int               @id @default(autoincrement())
+  id                  Int                @id @default(autoincrement())
   title               String
   course_id           Int
-  Courses             Courses           @relation(fields: [course_id], references: [id])
-  description         String?           @db.LongText
+  Courses             Courses            @relation(fields: [course_id], references: [id])
+  description         String?            @db.LongText
   duration_in_minutes Int
   start_time          DateTime
   end_time            DateTime
   educator_id         Int
-  created_at          DateTime          @default(now())
-  updated_at          DateTime          @default(now())
-  belongsTo           Users             @relation(fields: [educator_id], references: [id])
+  created_at          DateTime           @default(now())
+  updated_at          DateTime           @default(now())
+  belongsTo           Users              @relation(fields: [educator_id], references: [id])
   Questions           Questions[]
-  ExamSubmissions     ExamSubmissions[]
-  ExamResults         ExamResults[]
+  ExamSubmissions     Exam_Submissions[]
+  ExamResults         Exam_Results[]
 }
 
 model Questions {
-  id             Int              @id @default(autoincrement())
+  id             Int               @id @default(autoincrement())
   exam_id        Int
-  question_text  String           @db.LongText
-  question_type  QuestionTypes
+  question_text  String            @db.LongText
+  question_type  Question_Types
   points         Int
-  created_at     DateTime         @default(now())
-  updated_at     DateTime         @default(now())
-  belongsTo      Exams            @relation(fields: [exam_id], references: [id])
+  created_at     DateTime          @default(now())
+  updated_at     DateTime          @default(now())
+  belongsTo      Exams             @relation(fields: [exam_id], references: [id])
   Choices        Choices[]
-  StudentAnswers StudentAnswers[]
+  StudentAnswers Student_Answers[]
 }
 
 model Choices {
-  id             Int              @id @default(autoincrement())
+  id             Int               @id @default(autoincrement())
   question_id    Int
-  choice_test    String           @db.MediumText
+  choice_test    String            @db.MediumText
   is_correct     Boolean
-  created_at     DateTime         @default(now())
-  updated_at     DateTime         @default(now())
-  belongsTo      Questions        @relation(fields: [question_id], references: [id])
-  StudentAnswers StudentAnswers[]
+  created_at     DateTime          @default(now())
+  updated_at     DateTime          @default(now())
+  belongsTo      Questions         @relation(fields: [question_id], references: [id])
+  StudentAnswers Student_Answers[]
 }
 
-model ExamSubmissions {
-  id             Int              @id @default(autoincrement())
+model Exam_Submissions {
+  id             Int               @id @default(autoincrement())
   student_id     Int
   exam_id        Int
-  Exam           Exams            @relation(fields: [exam_id], references: [id])
-  Student        Users            @relation(fields: [student_id], references: [id])
+  Exam           Exams             @relation(fields: [exam_id], references: [id])
+  Student        Users             @relation(fields: [student_id], references: [id])
   submitted_at   DateTime
-  score          Decimal          @db.Decimal(5, 2)
-  created_at     DateTime         @default(now())
-  updated_at     DateTime         @default(now())
-  StudentAnswers StudentAnswers[]
+  score          Decimal           @db.Decimal(5, 2)
+  created_at     DateTime          @default(now())
+  updated_at     DateTime          @default(now())
+  StudentAnswers Student_Answers[]
 }
 
-model StudentAnswers {
-  id                 Int             @id @default(autoincrement())
+model Student_Answers {
+  id                 Int              @id @default(autoincrement())
   submission_id      Int
   question_id        Int
   selected_choice_id Int // for optional or multi-choice question
-  answer_text        String          @db.LongText // for essay type questions
-  created_at         DateTime        @default(now())
-  updated_at         DateTime        @default(now())
-  Submission         ExamSubmissions @relation(fields: [submission_id], references: [id])
-  Question           Questions       @relation(fields: [question_id], references: [id])
-  Choice             Choices         @relation(fields: [selected_choice_id], references: [id])
+  answer_text        String           @db.LongText // for essay type questions
+  created_at         DateTime         @default(now())
+  updated_at         DateTime         @default(now())
+  Submission         Exam_Submissions @relation(fields: [submission_id], references: [id])
+  Question           Questions        @relation(fields: [question_id], references: [id])
+  Choice             Choices          @relation(fields: [selected_choice_id], references: [id])
 }
 
-model ExamResults {
+model Exam_Results {
   id          Int      @id @default(autoincrement())
   student_id  Int
   exam_id     Int
@@ -182,16 +188,16 @@ model ExamResults {
 }
 
 model Chats {
-  id               Int                @id @default(autoincrement())
+  id               Int                 @id @default(autoincrement())
   name             String
-  is_group         Boolean            @default(false)
-  created_at       DateTime           @default(now())
-  updated_at       DateTime           @default(now())
-  ChatParticipants ChatParticipants[]
-  ChatMessages     ChatMessages[]
+  is_group         Boolean             @default(false)
+  created_at       DateTime            @default(now())
+  updated_at       DateTime            @default(now())
+  ChatParticipants Chat_Participants[]
+  ChatMessages     Chat_Messages[]
 }
 
-model ChatParticipants {
+model Chat_Participants {
   id         Int      @id @default(autoincrement())
   chat_id    Int
   user_id    Int
@@ -203,42 +209,42 @@ model ChatParticipants {
   User       Users    @relation(fields: [user_id], references: [id])
 }
 
-model ChatMessages {
-  id                Int                 @id @default(autoincrement())
+model Chat_Messages {
+  id                Int                   @id @default(autoincrement())
   chat_id           Int
   user_id           Int
-  message_text      String              @db.LongText
-  message_type      MessageTypes        @default(TEXT)
+  message_text      String                @db.LongText
+  message_type      Message_Types         @default(TEXT)
   file_url          String
-  created_at        DateTime            @default(now())
-  updated_at        DateTime            @default(now())
-  Chat              Chats               @relation(fields: [chat_id], references: [id])
-  User              Users               @relation(fields: [user_id], references: [id])
-  MessageReadStatus MessageReadStatus[]
+  created_at        DateTime              @default(now())
+  updated_at        DateTime              @default(now())
+  Chat              Chats                 @relation(fields: [chat_id], references: [id])
+  User              Users                 @relation(fields: [user_id], references: [id])
+  MessageReadStatus Message_Read_Status[]
 }
 
-model MessageReadStatus {
-  id          Int          @id @default(autoincrement())
+model Message_Read_Status {
+  id          Int           @id @default(autoincrement())
   message_id  Int
   user_id     Int
   read_at     DateTime
-  created_at  DateTime     @default(now())
-  updated_at  DateTime     @default(now())
-  User        Users        @relation(fields: [user_id], references: [id])
-  ChatMessage ChatMessages @relation(fields: [message_id], references: [id])
+  created_at  DateTime      @default(now())
+  updated_at  DateTime      @default(now())
+  User        Users         @relation(fields: [user_id], references: [id])
+  ChatMessage Chat_Messages @relation(fields: [message_id], references: [id])
 }
 
 model Posts {
-  id          Int         @id @default(autoincrement())
+  id          Int          @id @default(autoincrement())
   user_id     Int
-  content     String      @db.LongText
-  total_likes BigInt      @default(0)
-  created_at  DateTime    @default(now())
-  updated_at  DateTime    @default(now())
-  User        Users       @relation(fields: [user_id], references: [id])
+  content     String       @db.LongText
+  total_likes BigInt       @default(0)
+  created_at  DateTime     @default(now())
+  updated_at  DateTime     @default(now())
+  User        Users        @relation(fields: [user_id], references: [id])
   Likes       Likes[]
   Comments    Comments[]
-  PostMedia   PostMedia[]
+  PostMedia   Post_Media[]
 }
 
 model Likes {
@@ -263,12 +269,31 @@ model Comments {
   User              Users    @relation(fields: [user_id], references: [id])
 }
 
-model PostMedia {
-  id         Int        @id @default(autoincrement())
+model Post_Media {
+  id         Int         @id @default(autoincrement())
   post_id    Int
   media_url  String
-  media_type MediaTypes
-  created_at DateTime   @default(now())
-  updated_at DateTime   @default(now())
-  Post       Posts      @relation(fields: [post_id], references: [id])
+  media_type Media_Types
+  created_at DateTime    @default(now())
+  updated_at DateTime    @default(now())
+  Post       Posts       @relation(fields: [post_id], references: [id])
+}
+
+model Subjects {
+  id             Int              @id @default(autoincrement())
+  name           String
+  description    String
+  created_at     DateTime         @default(now())
+  updated_at     DateTime
+  Courses        Courses[]
+  Past_Questions Past_Questions[]
+}
+
+model School_Groups {
+  id             Int              @id @default(autoincrement())
+  name           String
+  description    String
+  created_at     DateTime         @default(now())
+  updated_at     DateTime
+  Past_Questions Past_Questions[]
 }

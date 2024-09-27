@@ -27,4 +27,5 @@ commonRouter.post('/auth/password/forgot', passwordForgotValidation, forgotPassw
 commonRouter.post('/auth/password/reset/:token', passwordResetValidation, resetPassword)
 
 
+
 export default commonRouter;
