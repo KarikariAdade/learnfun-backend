@@ -83,15 +83,16 @@ model Password_Resets {
 }
 
 model Past_Questions {
-  id              Int           @id @default(autoincrement())
-  subject         String
-  year            Int?          @db.Year
-  created_at      DateTime      @default(now())
-  updated_at      DateTime      @default(now())
-  school_group_id Int
-  School_Groups   School_Groups @relation(fields: [school_group_id], references: [id])
-  subject_id      Int
-  Subjects        Subjects      @relation(fields: [subject_id], references: [id])
+  id                   Int                    @id @default(autoincrement())
+  name              String
+  year                 String?
+  created_at           DateTime               @default(now())
+  updated_at           DateTime               @default(now())
+  school_group_id      Int
+  School_Groups        School_Groups          @relation(fields: [school_group_id], references: [id])
+  subject_id           Int
+  Subjects             Subjects               @relation(fields: [subject_id], references: [id])
+  Past_Questions_Files Past_Questions_Files[]
 }
 
 model Courses {
@@ -275,16 +276,16 @@ model Post_Media {
   media_url  String
   media_type Media_Types
   created_at DateTime    @default(now())
-  updated_at DateTime    @default(now())
+  updated_at DateTime?   @default(now())
   Post       Posts       @relation(fields: [post_id], references: [id])
 }
 
 model Subjects {
   id             Int              @id @default(autoincrement())
   name           String
-  description    String
+  description    String?
   created_at     DateTime         @default(now())
-  updated_at     DateTime
+  updated_at     DateTime?        @default(now())
   Courses        Courses[]
   Past_Questions Past_Questions[]
 }
@@ -292,8 +293,17 @@ model Subjects {
 model School_Groups {
   id             Int              @id @default(autoincrement())
   name           String
-  description    String
+  description    String?
   created_at     DateTime         @default(now())
-  updated_at     DateTime
+  updated_at     DateTime?        @default(now())
   Past_Questions Past_Questions[]
+}
+
+model Past_Questions_Files {
+  id               Int            @id @default(autoincrement())
+  past_question_id Int
+  file_url         String
+  created_at       DateTime       @default(now())
+  updated_at       DateTime       @default(now())
+  Past_Question    Past_Questions @relation(fields: [past_question_id], references: [id])
 }

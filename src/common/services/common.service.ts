@@ -2,6 +2,8 @@ import {Request, Response} from 'express'
 import bcrypt from 'bcrypt'
 import crypto from 'crypto'
 import { emailQueue } from './queue.service'
+import path from 'path'
+import fs from 'fs'
 
 export const generateResponse = (type: string, message: string, data:any, res: Response) => {
     if (type === 'success')
@@ -67,4 +69,28 @@ export const sendVerificationEmail = async (req:Request, user:any) => {
             'url': verification_link
         }
     }, {removeOnComplete: true})
+}
+
+export const validateFile = (res:Response, mime_types:any, req: Request) => {
+
+    const file:any = req.file
+
+    if (!mime_types.includes(file.mimetype))
+        return generateResponse('error', 'Invalid file type', {}, res)
+
+    if (file.size > 2 * 1024 * 1024)
+        return generateResponse('error', 'File size exceeds 2MB', {}, res)
+
+}
+
+export const generateRandomString = (length: number) => {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters.charAt(randomIndex);
+    }
+
+    return result;
 }
