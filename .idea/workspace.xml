@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e3b3131-a797-4fcb-8c21-746d6a09ecb9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/controllers/profile.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/controllers/profile.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/routes/admin.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/routes/admin.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/services/common.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/services/common.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +115,7 @@
       <workItem from="1727525920479" duration="1744000" />
       <workItem from="1727551114693" duration="118000" />
       <workItem from="1727554521327" duration="96000" />
-      <workItem from="1727714362462" duration="16373000" />
+      <workItem from="1727714362462" duration="16437000" />
     </task>
     <servers />
   </component>
