@@ -9,11 +9,15 @@
     "start": "node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "type": "commonjs",
   "author": "Karikari Adade",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.20.0",
+    "@types/multer": "^1.4.12",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
     "bullmq": "^5.8.3",
@@ -27,6 +31,7 @@
     "html-pdf": "^3.0.1",
     "ioredis": "^5.4.1",
     "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.14",
     "nodemailer-express-handlebars": "^6.1.2",
     "nodemon": "^3.1.4",

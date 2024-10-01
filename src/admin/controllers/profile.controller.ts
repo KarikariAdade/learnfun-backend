@@ -27,6 +27,11 @@ export const viewProfile = async (req:Request, res:Response) => {
 export const updateProfile = async (req:Request, res:Response) => {
     const requested_user:any = req.user
 
+    const validationErrors = validationResult(req)
+
+    if (!validationErrors.isEmpty())
+        return generateResponse('error', 'validation errors', validationErrors.array(), res)
+
     const {name, email, phone} = req.body
 
     try {

@@ -12,8 +12,11 @@ app.use(morgan('dev'))
 app.use(cors())
 
 app.use(passport.initialize())
+app.use(express.json())
 
 app.use(express.urlencoded({extended: true}))
+
+
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello World!')

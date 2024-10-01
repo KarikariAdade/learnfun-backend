@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e3b3131-a797-4fcb-8c21-746d6a09ecb9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/routes/common.route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/routes/common.route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +41,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;admin&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.0.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.0.3&quot;,
@@ -75,13 +72,6 @@
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="learn-fun" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="learn-fun" />
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -121,7 +111,11 @@
       <workItem from="1726998046561" duration="6643000" />
       <workItem from="1727088312343" duration="10550000" />
       <workItem from="1727395040365" duration="4230000" />
-      <workItem from="1727401745546" duration="508000" />
+      <workItem from="1727401745546" duration="2153000" />
+      <workItem from="1727525920479" duration="1744000" />
+      <workItem from="1727551114693" duration="118000" />
+      <workItem from="1727554521327" duration="96000" />
+      <workItem from="1727714362462" duration="16437000" />
     </task>
     <servers />
   </component>
@@ -201,10 +195,30 @@
     {
       "branch": "main",
       "currentBranchFilter": true
+    },
+    {
+      "branch": "admin",
+      "currentBranchFilter": true
+    },
+    {
+      "branch": "admin",
+      "currentBranchFilter": true
+    },
+    {
+      "branch": "admin",
+      "currentBranchFilter": true
+    },
+    {
+      "branch": "admin",
+      "currentBranchFilter": true
+    },
+    {
+      "branch": "admin",
+      "currentBranchFilter": true
     }
   ],
   "lastFilter": {
-    "branch": "main",
+    "branch": "admin",
     "currentBranchFilter": true
   }
 }]]></component>
