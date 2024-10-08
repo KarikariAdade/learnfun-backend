@@ -4,11 +4,12 @@ import {updateProfile, viewProfile } from "../controllers/profile.controller";
 import { profileUpdateValidation } from "../requests/profile.request";
 import {createSubject, updateSubject, viewSubjects } from "../controllers/subjects.controller";
 import { subjectCreationValidation, subjectUpdateValidation } from "../requests/subjects.request";
-import {storePastQuestions, viewPastQuestions } from "../controllers/past_questions.controller";
+import {deletePastQuestions,
+    downloadPastQuestions, storePastQuestions, updatePastQuestions, viewPastQuestion, viewPastQuestions} from "../controllers/past_questions.controller";
 import multer from 'multer'
 import path from "path";
 import fs from 'fs';
-import { pastQuestionCreationValidation } from "../requests/past_questions.request";
+import { pastQuestionCreationValidation, pastQuestionUpdateValidation } from "../requests/past_questions.request";
 
 const adminRoutes = Router();
 
@@ -37,5 +38,9 @@ adminRoutes.post('/subjects/update', passport.authenticate('jwt', {session:false
 
 adminRoutes.get('/past/questions', passport.authenticate('jwt', {session:false}), viewPastQuestions);
 adminRoutes.post('/past/questions/store', passport.authenticate('jwt', {session:false}), upload.single('file'), pastQuestionCreationValidation, storePastQuestions);
+adminRoutes.get('/past/questions/details', passport.authenticate('jwt', {session:false}), viewPastQuestion)
+adminRoutes.post('/past/questions/update', passport.authenticate('jwt', {session:false}), upload.single('file'), pastQuestionUpdateValidation, updatePastQuestions);
+adminRoutes.post('/past/questions/delete', passport.authenticate('jwt', {session:false}), deletePastQuestions)
+adminRoutes.get('/past/questions/download', downloadPastQuestions)
 
 export default adminRoutes
