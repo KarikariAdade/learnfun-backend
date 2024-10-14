@@ -114,13 +114,14 @@ model Exams {
   course_id           Int
   Courses             Courses            @relation(fields: [course_id], references: [id])
   description         String?            @db.LongText
-  duration_in_minutes Int
-  start_time          DateTime
-  end_time            DateTime
-  educator_id         Int
+  duration_in_minutes Int?
+  start_time          DateTime?
+  end_time            DateTime?
+  is_scheduled Boolean @default(false)
+  educator_id         Int?
   created_at          DateTime           @default(now())
   updated_at          DateTime           @default(now())
-  belongsTo           Users              @relation(fields: [educator_id], references: [id])
+  belongsTo           Users?              @relation(fields: [educator_id], references: [id])
   Questions           Questions[]
   ExamSubmissions     Exam_Submissions[]
   ExamResults         Exam_Results[]

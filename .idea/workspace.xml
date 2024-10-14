@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0e3b3131-a797-4fcb-8c21-746d6a09ecb9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/controllers/past_questions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/controllers/past_questions.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/requests/past_questions.request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/requests/past_questions.request.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/routes/admin.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/routes/admin.routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,21 +71,6 @@
       <recent name="D:\Projects\Node\learn-fun\src" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="learn-fun" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="learn-fun" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -128,7 +112,8 @@
       <workItem from="1727714362462" duration="17701000" />
       <workItem from="1728220239060" duration="363000" />
       <workItem from="1728329249231" duration="2698000" />
-      <workItem from="1728419775557" duration="7559000" />
+      <workItem from="1728419775557" duration="11941000" />
+      <workItem from="1728806509755" duration="11554000" />
     </task>
     <servers />
   </component>
@@ -207,6 +192,10 @@
     },
     {
       "branch": "main",
+      "currentBranchFilter": true
+    },
+    {
+      "branch": "admin",
       "currentBranchFilter": true
     },
     {

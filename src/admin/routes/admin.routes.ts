@@ -10,6 +10,8 @@ import multer from 'multer'
 import path from "path";
 import fs from 'fs';
 import { pastQuestionCreationValidation, pastQuestionUpdateValidation } from "../requests/past_questions.request";
+import {storeExams, updateExams, viewDetails, viewExams } from "../controllers/exam.controller";
+import { examCreationValidation, examUpdateValidation } from "../requests/exam.request";
 
 const adminRoutes = Router();
 
@@ -42,5 +44,12 @@ adminRoutes.get('/past/questions/details', passport.authenticate('jwt', {session
 adminRoutes.post('/past/questions/update', passport.authenticate('jwt', {session:false}), upload.single('file'), pastQuestionUpdateValidation, updatePastQuestions);
 adminRoutes.post('/past/questions/delete', passport.authenticate('jwt', {session:false}), deletePastQuestions)
 adminRoutes.get('/past/questions/download', downloadPastQuestions)
+
+// Exams
+
+adminRoutes.get('/exams', passport.authenticate('jwt', {session:false}), viewExams);
+adminRoutes.get('/exams/store', passport.authenticate('jwt', {session:false}), examCreationValidation, storeExams);
+adminRoutes.get('/exams/update', passport.authenticate('jwt', {session:false}), examUpdateValidation, updateExams);
+adminRoutes.get('/exams/details', passport.authenticate('jwt', {session:false}), viewDetails);
 
 export default adminRoutes
