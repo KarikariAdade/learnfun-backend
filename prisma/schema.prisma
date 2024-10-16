@@ -44,6 +44,11 @@ enum Media_Types {
   AUDIO
 }
 
+enum Owned_By {
+  PAST_QUESTION
+  COURSE
+}
+
 model Users {
   id                  Int                   @id @default(autoincrement())
   uuid                String                @default(uuid())
@@ -84,7 +89,7 @@ model Password_Resets {
 
 model Past_Questions {
   id                   Int                    @id @default(autoincrement())
-  name              String
+  name                 String
   year                 String?
   created_at           DateTime               @default(now())
   updated_at           DateTime               @default(now())
@@ -93,6 +98,7 @@ model Past_Questions {
   subject_id           Int
   Subjects             Subjects               @relation(fields: [subject_id], references: [id])
   Past_Questions_Files Past_Questions_Files[]
+  Exams                Exams[]
 }
 
 model Courses {
@@ -111,20 +117,23 @@ model Courses {
 model Exams {
   id                  Int                @id @default(autoincrement())
   title               String
-  course_id           Int
-  Courses             Courses            @relation(fields: [course_id], references: [id])
+  course_id           Int?
+  Courses             Courses?           @relation(fields: [course_id], references: [id])
   description         String?            @db.LongText
   duration_in_minutes Int?
   start_time          DateTime?
   end_time            DateTime?
-  is_scheduled Boolean @default(false)
+  owned_by            Owned_By
+  past_question_id    Int?
+  is_scheduled        Boolean            @default(false)
   educator_id         Int?
   created_at          DateTime           @default(now())
   updated_at          DateTime           @default(now())
-  belongsTo           Users?              @relation(fields: [educator_id], references: [id])
+  belongsTo           Users?             @relation(fields: [educator_id], references: [id])
   Questions           Questions[]
   ExamSubmissions     Exam_Submissions[]
   ExamResults         Exam_Results[]
+  Past_Questions      Past_Questions?    @relation(fields: [past_question_id], references: [id])
 }
 
 model Questions {

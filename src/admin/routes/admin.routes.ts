@@ -11,7 +11,9 @@ import path from "path";
 import fs from 'fs';
 import { pastQuestionCreationValidation, pastQuestionUpdateValidation } from "../requests/past_questions.request";
 import {storeExams, updateExams, viewDetails, viewExams } from "../controllers/exam.controller";
-import { examCreationValidation, examUpdateValidation } from "../requests/exam.request";
+import {examCreationValidation, examDetailValidation, examUpdateValidation} from "../requests/exam.request";
+import {deleteQuestions, storeQuestions, updateQuestions, viewQuestions, viewQuestionsDetails } from "../controllers/exam_question.controller";
+import {examQuestionCreateValidation, examQuestionValidation} from "../requests/exam_question.request";
 
 const adminRoutes = Router();
 
@@ -48,8 +50,15 @@ adminRoutes.get('/past/questions/download', downloadPastQuestions)
 // Exams
 
 adminRoutes.get('/exams', passport.authenticate('jwt', {session:false}), viewExams);
-adminRoutes.get('/exams/store', passport.authenticate('jwt', {session:false}), examCreationValidation, storeExams);
-adminRoutes.get('/exams/update', passport.authenticate('jwt', {session:false}), examUpdateValidation, updateExams);
-adminRoutes.get('/exams/details', passport.authenticate('jwt', {session:false}), viewDetails);
+adminRoutes.post('/exams/store', passport.authenticate('jwt', {session:false}), examCreationValidation, storeExams);
+adminRoutes.post('/exams/update', passport.authenticate('jwt', {session:false}), examUpdateValidation, updateExams);
+adminRoutes.get('/exams/details', passport.authenticate('jwt', {session:false}), examDetailValidation, viewDetails);
+
+// Exam Questions
+adminRoutes.get('/exams/questions', passport.authenticate('jwt', {session:false}), examQuestionValidation, viewQuestions)
+adminRoutes.post('/exams/questions/store', passport.authenticate('jwt', {session:false}), examQuestionCreateValidation, storeQuestions)
+adminRoutes.get('/exams/questions/details', passport.authenticate('jwt', {session:false}), viewQuestionsDetails)
+adminRoutes.post('/exams/questions/update', passport.authenticate('jwt', {session:false}), updateQuestions)
+adminRoutes.post('/exams/questions/delete', passport.authenticate('jwt', {session:false}), deleteQuestions)
 
 export default adminRoutes
