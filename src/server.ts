@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 import adminRoutes from "./admin/routes/admin.routes";
 import passport from "./common/services/passport.service";
+import studentRoute from "./student/routes/student.routes";
 
 const app = express();
 
@@ -24,5 +25,6 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use('/api', commonRouter)
 app.use('/api/admin', adminRoutes)
+app.use('/api/student', studentRoute)
 
 export default app
