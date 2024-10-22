@@ -152,7 +152,7 @@ model Questions {
 model Choices {
   id             Int               @id @default(autoincrement())
   question_id    Int
-  choice_test    String            @db.MediumText
+  choice_text    String            @db.MediumText
   is_correct     Boolean
   created_at     DateTime          @default(now())
   updated_at     DateTime          @default(now())
